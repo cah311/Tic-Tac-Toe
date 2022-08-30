@@ -19,9 +19,30 @@ const gameBoard = (() => {
 })();
 
 // Player Objects
+const Player = (name, marker) => {
+  name = name;
+  marker = marker;
+  const setMarker = () => console.log(name, marker);
+  return { setMarker, marker };
+};
 
-// const player1 = Player("Jim", "X");
-// const player2 = Player("Mark", "O");
+const player1 = Player("Jim", "X");
+const player2 = Player("Mark", "O");
+
+player1.marker;
+player2.marker;
+
+player1.setMarker();
+player2.setMarker();
 
 // Gameflow Functions
-const displayController = (() => {})();
+const displayController = ((marker) => {
+  const gameMark = document.getElementsByClassName("game-cell");
+  const markFunction = () => {
+    const mark = document.createElement("h1");
+    mark.textContent = marker;
+    gameMark.append.mark;
+  };
+
+  document.addEventListener("click", markFunction);
+})(marker);
