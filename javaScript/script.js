@@ -1,6 +1,6 @@
 // Gameboard Module
 const gameBoard = (() => {
-  const gameboard = [];
+  let gameboardArray = [];
   let gameBoardHTML = document.getElementById("game-space");
 
   for (let i = 0; i <= 2; i++) {
@@ -12,15 +12,16 @@ const gameBoard = (() => {
       let gameCell = document.createElement("div");
       gameCell.setAttribute("id", `cell${i}${j}`);
       gameCell.setAttribute("class", `game-cell`);
-
+      gameboardArray.push(gameCell);
       gameRow.append(gameCell);
     }
   }
-  //gameBoard.push(gameCell);
 })();
 
 // Player Objects
-const Player = (name, marker) => {};
+
+// const player1 = Player("Jim", "X");
+// const player2 = Player("Mark", "O");
 
 // Gameflow Functions
 const displayController = (() => {})();
