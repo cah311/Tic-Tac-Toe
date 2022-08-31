@@ -3,6 +3,7 @@ const gameBoard = (() => {
   let gameboardArray = [];
   let gameBoardHTML = document.getElementById("game-space");
 
+  //create grid
   for (let i = 0; i <= 2; i++) {
     let gameRow = document.createElement("div");
     gameRow.setAttribute("id", `row${i}`);
@@ -12,6 +13,13 @@ const gameBoard = (() => {
       let gameCell = document.createElement("div");
       gameCell.setAttribute("id", `cell${i}${j}`);
       gameCell.setAttribute("class", `game-cell`);
+      gameCell.addEventListener("click", function () {
+        const mark = document.createElement("h1");
+        mark.setAttribute("class", "X");
+        mark.textContent = "X";
+        gameCell.appendChild(mark);
+        console.log(`cell${i}${j}`);
+      });
       gameboardArray.push(gameCell);
       gameRow.append(gameCell);
     }
@@ -19,30 +27,34 @@ const gameBoard = (() => {
 })();
 
 // Player Objects
-const Player = (name, marker) => {
-  name = name;
-  marker = marker;
-  const setMarker = () => console.log(name, marker);
-  return { setMarker, marker };
+const Player = () => {
+  const setMarker = () => {
+    const playerMark = document.getElementsByClassName("marker-button");
+    console.log(playerMark);
+  };
+  return { setMarker };
 };
 
-const player1 = Player("Jim", "X");
-const player2 = Player("Mark", "O");
+// const player1 = Player("Jim", "X");
+// const player2 = Player("Mark", "O");
 
-player1.marker;
-player2.marker;
+// player1.marker;
+// player2.marker;
 
-player1.setMarker();
-player2.setMarker();
+// player1.setMarker();
+// player2.setMarker();
 
 // Gameflow Functions
-const displayController = ((marker) => {
-  const gameMark = document.getElementsByClassName("game-cell");
+const displayController = (marker) => {
+  const gameMark = document.getElementById("cell00" && "cell01");
   const markFunction = () => {
-    const mark = document.createElement("h1");
-    mark.textContent = marker;
-    gameMark.append.mark;
+    console.log(gameMark);
+    // const mark = document.createElement("h1");
+    // mark.textContent = marker;
+    // gameMark.append.mark;
   };
 
   document.addEventListener("click", markFunction);
-})(marker);
+};
+
+//const gameMark = displayController(player1.marker);
