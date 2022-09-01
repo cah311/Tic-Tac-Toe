@@ -14,5 +14,11 @@
     height: 50px;
     width: 50px;
     border: 1.5px solid black;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.X {
+    color: red;
 }

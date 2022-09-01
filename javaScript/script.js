@@ -27,14 +27,45 @@ const gameBoard = (() => {
 })();
 
 // Player Objects
-const Player = () => {
-  const setMarker = () => {
-    const playerMark = document.getElementsByClassName("marker-button");
-    console.log(playerMark);
-  };
-  return { setMarker };
+const playerFactory = (marker) => {
+  //   this.name = name;
+
+  //   if (typeof Object == "undefined") {
+  //     name = "player1";
+  //   } else {
+  //     name = "player2";
+  //   }
+  //   Object = this.name;
+
+  //   console.log(Object, this.name);
+  //   return { Object };
+  marker;
+  console.log(`player${marker}`);
+  return marker;
 };
 
+// const person1 = Player();
+// const person2 = Player();
+// console.log(person1);
+// console.log(person2);
+
+const markerSelection = document.getElementsByClassName("marker-button");
+for (let i in markerSelection) {
+  markerSelection[i].onclick = function () {
+    let a = markerSelection[i].value;
+    playerFactory(a);
+    console.log(a);
+  };
+}
+
+function playerSelectionX() {
+  let a = document.getElementById("x-button").value;
+  console.log(a);
+}
+function playerSelectionO() {
+  let b = document.getElementById("o-button").value;
+  console.log(b);
+}
 // const player1 = Player("Jim", "X");
 // const player2 = Player("Mark", "O");
 
@@ -45,16 +76,4 @@ const Player = () => {
 // player2.setMarker();
 
 // Gameflow Functions
-const displayController = (marker) => {
-  const gameMark = document.getElementById("cell00" && "cell01");
-  const markFunction = () => {
-    console.log(gameMark);
-    // const mark = document.createElement("h1");
-    // mark.textContent = marker;
-    // gameMark.append.mark;
-  };
-
-  document.addEventListener("click", markFunction);
-};
-
-//const gameMark = displayController(player1.marker);
+const displayController = (() => {})();
