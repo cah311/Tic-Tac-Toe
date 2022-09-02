@@ -31,10 +31,13 @@ const playerFactory = (name, marker) => {};
 
 // Gameflow Functions
 const displayController = (() => {
+  let player1 = "Player 1";
+
   //Create popup window
   const playerPopup = document.getElementById("player-popup");
   const popupWindow = document.createElement("div");
   popupWindow.setAttribute("id", "popup-window");
+  popupWindow.setAttribute("class", "active");
   playerPopup.append(popupWindow);
 
   //Create Player Heading
@@ -42,7 +45,7 @@ const displayController = (() => {
   popupHeader.setAttribute("id", "popup-header");
   const popupTitle = document.createElement("h1");
   popupTitle.setAttribute("id", "popup-title");
-  popupTitle.innerHTML = "Player 1";
+  popupTitle.innerHTML = player1;
   popupWindow.append(popupHeader);
   popupHeader.append(popupTitle);
 
@@ -60,6 +63,7 @@ const displayController = (() => {
   xButton.setAttribute("class", "marker-button");
   xButton.setAttribute("id", "x-button");
   xButton.setAttribute("value", "X");
+  xButton.setAttribute("data-close-button", "");
   xButton.innerHTML = "X";
   buttonContainer.append(xButton);
 
@@ -69,4 +73,22 @@ const displayController = (() => {
   oButton.setAttribute("value", "O");
   oButton.innerHTML = "O";
   buttonContainer.append(oButton);
+
+  //Close Popup
+  const popupOverlay = document.getElementById("popup-overlay");
+  const popupClose = document.querySelectorAll("[data-close-button]");
+  popupClose.forEach((button) => {
+    button.addEventListener("click", () => {
+      const popup = document.getElementById("popup-window");
+      closePopup(popup);
+    });
+  });
+
+  function closePopup(popup) {
+    if (popup == null) return;
+    popup.classList.remove("active");
+    console.log("bang");
+
+    popupOverlay.classList.remove("active");
+  }
 })();
