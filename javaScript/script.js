@@ -27,53 +27,46 @@ const gameBoard = (() => {
 })();
 
 // Player Objects
-const playerFactory = (marker) => {
-  //   this.name = name;
-
-  //   if (typeof Object == "undefined") {
-  //     name = "player1";
-  //   } else {
-  //     name = "player2";
-  //   }
-  //   Object = this.name;
-
-  //   console.log(Object, this.name);
-  //   return { Object };
-  marker;
-  console.log(`player${marker}`);
-  return marker;
-};
-
-// const person1 = Player();
-// const person2 = Player();
-// console.log(person1);
-// console.log(person2);
-
-const markerSelection = document.getElementsByClassName("marker-button");
-for (let i in markerSelection) {
-  markerSelection[i].onclick = function () {
-    let a = markerSelection[i].value;
-    playerFactory(a);
-    console.log(a);
-  };
-}
-
-function playerSelectionX() {
-  let a = document.getElementById("x-button").value;
-  console.log(a);
-}
-function playerSelectionO() {
-  let b = document.getElementById("o-button").value;
-  console.log(b);
-}
-// const player1 = Player("Jim", "X");
-// const player2 = Player("Mark", "O");
-
-// player1.marker;
-// player2.marker;
-
-// player1.setMarker();
-// player2.setMarker();
+const playerFactory = (name, marker) => {};
 
 // Gameflow Functions
-const displayController = (() => {})();
+const displayController = (() => {
+  //Create popup window
+  const playerPopup = document.getElementById("player-popup");
+  const popupWindow = document.createElement("div");
+  popupWindow.setAttribute("id", "popup-window");
+  playerPopup.append(popupWindow);
+
+  //Create Player Heading
+  const popupHeader = document.createElement("div");
+  popupHeader.setAttribute("id", "popup-header");
+  const popupTitle = document.createElement("h1");
+  popupTitle.setAttribute("id", "popup-title");
+  popupTitle.innerHTML = "Player 1";
+  popupWindow.append(popupHeader);
+  popupHeader.append(popupTitle);
+
+  // Popup Text
+  const popupText = document.createElement("div");
+  popupText.setAttribute("id", "popup-text");
+  popupText.innerHTML = "Choose your Marker";
+  popupWindow.append(popupText);
+
+  //create buttons
+  const buttonContainer = document.createElement("div");
+  popupWindow.append(buttonContainer);
+
+  const xButton = document.createElement("button");
+  xButton.setAttribute("class", "marker-button");
+  xButton.setAttribute("id", "x-button");
+  xButton.setAttribute("value", "X");
+  xButton.innerHTML = "X";
+  buttonContainer.append(xButton);
+
+  const oButton = document.createElement("button");
+  oButton.setAttribute("class", "marker-button");
+  oButton.setAttribute("id", "o-button");
+  oButton.setAttribute("value", "O");
+  oButton.innerHTML = "O";
+  buttonContainer.append(oButton);
+})();
