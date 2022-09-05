@@ -13,13 +13,23 @@ const gameBoard = (() => {
       let gameCell = document.createElement("div");
       gameCell.setAttribute("id", `cell${i}${j}`);
       gameCell.setAttribute("class", `game-cell`);
+
+      // Cell onClick
       gameCell.addEventListener("click", function () {
         const mark = document.createElement("h1");
-        mark.setAttribute("class", "X");
-        mark.textContent = "X";
+        mark.setAttribute("class", "game-board-mark");
+        mark.textContent = currentPlayer.marker;
         gameCell.appendChild(mark);
         console.log(`cell${i}${j}`);
+
+        // Switch turns
+        if (currentPlayer.marker === "X") {
+          currentPlayer = playerO;
+        } else if (currentPlayer.marker === "O") {
+          currentPlayer = playerX;
+        }
       });
+
       gameboardArray.push(gameCell);
       gameRow.append(gameCell);
     }
@@ -27,7 +37,18 @@ const gameBoard = (() => {
 })();
 
 // Player Objects
-const playerFactory = (name, marker) => {};
+const playerFactory = (name, marker) => {
+  name;
+  marker;
+  const sayPlayer = () => {
+    console.log(`Player Object: ${name} ${marker}`);
+  };
+  return { name, marker, sayPlayer };
+};
+
+let playerX;
+let playerO;
+let currentPlayer;
 
 // Gameflow Functions
 const displayController = (() => {
@@ -64,7 +85,7 @@ const displayController = (() => {
   xButton.setAttribute("class", "marker-button");
   xButton.setAttribute("id", "x-button");
   xButton.setAttribute("value", "X");
-  xButton.setAttribute("data-close-button", "");
+  xButton.setAttribute("data-button", "");
   xButton.innerHTML = "X";
   buttonContainer.append(xButton);
 
@@ -72,24 +93,46 @@ const displayController = (() => {
   oButton.setAttribute("class", "marker-button");
   oButton.setAttribute("id", "o-button");
   oButton.setAttribute("value", "O");
-  oButton.setAttribute("data-close-button", "");
+  oButton.setAttribute("data-button", "");
   oButton.innerHTML = "O";
   buttonContainer.append(oButton);
 
-  //Close Popup
+  //Button Functions
   const popupOverlay = document.getElementById("popup-overlay");
-  const popupClose = document.querySelectorAll("[data-close-button]");
-  popupClose.forEach((button) => {
+  const buttonClick = document.querySelectorAll("[data-button]");
+
+  buttonClick.forEach((button) => {
     button.addEventListener("click", () => {
-      x = x + 1;
-      popupTitle.innerHTML = `Player ${x}`;
       console.log(button.value);
+      console.log(player);
+
+      let markerValue;
+
       if (button.value === "X") {
         xButton.setAttribute("class", "active");
+        markerValue = button.value;
+        playerX = playerFactory(player, markerValue);
+        if (playerX.name === "Player 1") {
+          currentPlayer = playerX;
+        }
+        console.log(playerX);
+        console.log(`Current Player: ${currentPlayer}`);
       } else if (button.value === "O") {
         oButton.setAttribute("class", "active");
+        markerValue = button.value;
+        playerFactory(player, markerValue);
+        playerO = playerFactory(player, markerValue);
+        if (playerO.name === "Player 1") {
+          currentPlayer = playerO;
+        }
+        console.log(playerO);
+        console.log(`Current Player: ${currentPlayer}`);
       }
       const popup = document.getElementById("popup-window");
+      x = x + 1;
+      popupTitle.innerHTML = `Player ${x}`;
+      player = `Player ${x}`;
+
       closePopup(popup);
       closeOverlay(popupOverlay);
     });
