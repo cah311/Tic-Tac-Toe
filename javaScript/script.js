@@ -22,8 +22,74 @@ const gameBoard = (() => {
         gameCell.appendChild(mark);
         console.log(`cell${i}${j}`);
 
-        // Switch turns
+        // Winning conditions
+        if (`cell${i + 1}${j}` != null) {
+          let cellDown1 = document.getElementById(`cell${i + 1}${j}`);
+          console.log("cellDown1", cellDown1);
+        }
+        if (`cell${i - 1}${j}` != null) {
+          let cellUp1 = document.getElementById(`cell${i - 1}${j}`);
+          console.log("cellUp1", cellUp1);
+        }
+        if (`cell${i}${j - 1}` != null) {
+          let cellLeft1 = document.getElementById(`cell${i}${j - 1}`);
+          console.log("cellLeft1", cellLeft1);
+        }
+        if (`cell${i}${j + 1}` != null) {
+          let cellRight1 = document.getElementById(`cell${i}${j + 1}`);
+          console.log("cellRight1", cellRight1);
+        }
+        if (`cell${i - 1}${j - 1}` != null) {
+          let cellUp1Left1 = document.getElementById(`cell${i - 1}${j - 1}`);
+          console.log("cellUp1Left1", cellUp1Left1);
+        }
+        if (`cell${i - 1}${j + 1}` != null) {
+          let cellUp1Right1 = document.getElementById(`cell${i - 1}${j + 1}`);
+          console.log("cellUp1Right1", cellUp1Right1);
+        }
+        if (`cell${i + 1}${j - 1}` != null) {
+          let cellDown1Left1 = document.getElementById(`cell${i + 1}${j - 1}`);
+          console.log("cellDown1Left1", cellDown1Left1);
+        }
+        if (`cell${i + 1}${j + 1}` != null) {
+          let cellDown1Right1 = document.getElementById(`cell${i + 1}${j + 1}`);
+          console.log("cellDown1Right1", cellDown1Right1);
+        }
+        if (`cell${i - 2}${j}` != null) {
+          let cellUp2 = document.getElementById(`cell${i - 2}${j}`);
+          console.log("cellUp2", cellUp2);
+        }
+        if (`cell${i + 2}${j}` != null) {
+          let cellDown2 = document.getElementById(`cell${i + 2}${j}`);
+          console.log("cellDown2", cellDown2);
+        }
+        if (`cell${i}${j + 2}` != null) {
+          let cellRight2 = document.getElementById(`cell${i}${j + 2}`);
+          console.log("cellRight2", cellRight2);
+        }
+        if (`cell${i}${j - 2}` != null) {
+          let cellLeft2 = document.getElementById(`cell${i}${j - 2}`);
+          console.log("cellLeft2", cellLeft2);
+        }
+        if (`cell${i + 2}${j - 2}` != null) {
+          let cellDown2Left2 = document.getElementById(`cell${i + 2}${j - 2}`);
+          console.log("cellDown2Left2", cellDown2Left2);
+        }
+        if (`cell${i + 2}${j + 2}` != null) {
+          let cellDown2Right2 = document.getElementById(`cell${i + 2}${j + 2}`);
+          console.log("cellDown2Right2", cellDown2Right2);
+        }
+        if (`cell${i - 2}${j - 2}` != null) {
+          let cellUp2Left2 = document.getElementById(`cell${i - 2}${j - 2}`);
+          console.log("cellUp2Left2", cellUp2Left2);
+        }
+        if (`cell${i - 2}${j + 2}` != null) {
+          let cellUp2Right2 = document.getElementById(`cell${i - 2}${j + 2}`);
+          console.log("cellUp2Right2", cellUp2Right2);
+        }
+
         if (currentPlayer.marker === "X") {
+          // Switch turns
           currentPlayer = playerO;
         } else if (currentPlayer.marker === "O") {
           currentPlayer = playerX;
@@ -49,6 +115,8 @@ const playerFactory = (name, marker) => {
 let playerX;
 let playerO;
 let currentPlayer;
+
+let winner;
 
 // Gameflow Functions
 const displayController = (() => {
@@ -155,4 +223,6 @@ const displayController = (() => {
 
     popupOverlay.classList.remove("active");
   }
+
+  //Winning rules
 })();
