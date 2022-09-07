@@ -43,35 +43,48 @@ const gameBoard = (() => {
         let cellUp2Right2 = document.getElementById(`cell${i - 2}${j + 2}`);
 
         if (cellUp1 !== null && this.textContent === cellUp1.textContent) {
+          //Vertical check
           if (
             cellDown1 !== null &&
             this.textContent === cellDown1.textContent
           ) {
-            if (
-              this.textContent === cellUp1.textContent &&
-              this.textContent === cellDown1.textContent
-            ) {
-              alert(`${currentPlayer.name} wins!!`);
-              console.log(`${currentPlayer.name} wins!!`);
-              console.log(
-                "-----------------------------------------------------"
-              );
-            } else {
-              console.log(cellUp1.value);
-              console.log(cellDown1.value);
-              console.log("test1");
-
-              switchPlayers();
-            }
-          } else if (!cellDown1) {
-            {
-              console.log("test2");
-
-              console.log(this);
-              switchPlayers();
-            }
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp2 !== null &&
+            this.textContent === cellUp2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            console.log("final test");
+            switchPlayers();
           }
         } else if (
+          cellDown1 !== null &&
+          this.textContent === cellDown1.textContent
+        ) {
+          if (
+            cellDown2 !== null &&
+            this.textContent === cellDown2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            console.log("final test");
+            switchPlayers();
+          }
+        } else if (
+          // horizontal check
           cellLeft1 !== null &&
           this.textContent === cellLeft1.textContent
         ) {
@@ -79,94 +92,132 @@ const gameBoard = (() => {
             cellRight1 !== null &&
             this.textContent === cellRight1.textContent
           ) {
-            if (
-              this.textContent === cellLeft1.textContent &&
-              this.textContent === cellRight1.textContent
-            ) {
-              alert(`${currentPlayer.name} wins!!`);
-              console.log(`${currentPlayer.name} wins!!`);
-              console.log(
-                "-----------------------------------------------------"
-              );
-            } else {
-              console.log("test3");
-
-              switchPlayers();
-            }
-          } else if (!cellRight1) {
-            {
-              console.log("test4");
-
-              console.log(this);
-              switchPlayers();
-            }
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellLeft2 !== null &&
+            this.textContent === cellLeft2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            console.log("final test");
+            switchPlayers();
+          }
+        } else if (
+          cellRight1 !== null &&
+          this.textContent === cellRight1.textContent
+        ) {
+          if (
+            cellRight2 !== null &&
+            this.textContent === cellRight2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            console.log("final test");
+            switchPlayers();
+          }
+        } else if (
+          // diagonal check
+          cellUp1Left1 !== null &&
+          this.textContent === cellUp1Left1.textContent
+        ) {
+          if (
+            cellDown1Right1 !== null &&
+            this.textContent === cellDown1Right1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp2Left2 !== null &&
+            this.textContent === cellUp2Left2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            console.log("final test");
+            switchPlayers();
+          }
+        } else if (
+          cellDown1Right1 !== null &&
+          this.textContent === cellDown1Right1.textContent
+        ) {
+          if (
+            cellDown2Right2 !== null &&
+            this.textContent === cellDown2Right2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            console.log("final test");
+            switchPlayers();
+          }
+        } else if (
+          cellUp1Right1 !== null &&
+          this.textContent === cellUp1Right1.textContent
+        ) {
+          if (
+            cellDown1Left1 !== null &&
+            this.textContent === cellDown1Left1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp2Right2 !== null &&
+            this.textContent === cellUp2Right2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            console.log("final test");
+            switchPlayers();
+          }
+        } else if (
+          cellDown1Left1 !== null &&
+          this.textContent === cellDown1Left1.textContent
+        ) {
+          if (
+            cellDown2Left2 !== null &&
+            this.textContent === cellDown2Left2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            console.log("final test");
+            switchPlayers();
           }
         } else {
-          console.log("test5");
-
+          console.log("final test");
           switchPlayers();
         }
-
-        // if (`cell${i}${j - 1}` != null) {
-        //   let cellLeft1 = document.getElementById(`cell${i}${j - 1}`);
-        //   console.log("cellLeft1", cellLeft1);
-        // }
-        // if (`cell${i}${j + 1}` != null) {
-        //   let cellRight1 = document.getElementById(`cell${i}${j + 1}`);
-        //   console.log("cellRight1", cellRight1);
-        // }
-        // if (`cell${i - 1}${j - 1}` != null) {
-        //   let cellUp1Left1 = document.getElementById(`cell${i - 1}${j - 1}`);
-        //   console.log("cellUp1Left1", cellUp1Left1);
-        // }
-        // if (`cell${i - 1}${j + 1}` != null) {
-        //   let cellUp1Right1 = document.getElementById(`cell${i - 1}${j + 1}`);
-        //   console.log("cellUp1Right1", cellUp1Right1);
-        // }
-        // if (`cell${i + 1}${j - 1}` != null) {
-        //   let cellDown1Left1 = document.getElementById(`cell${i + 1}${j - 1}`);
-        //   console.log("cellDown1Left1", cellDown1Left1);
-        // }
-        // if (`cell${i + 1}${j + 1}` != null) {
-        //   let cellDown1Right1 = document.getElementById(`cell${i + 1}${j + 1}`);
-        //   console.log("cellDown1Right1", cellDown1Right1);
-        // }
-        // if (`cell${i - 2}${j}` != null) {
-        //   let cellUp2 = document.getElementById(`cell${i - 2}${j}`);
-        //   console.log("cellUp2", cellUp2);
-        // }
-        // if (`cell${i + 2}${j}` != null) {
-        //   let cellDown2 = document.getElementById(`cell${i + 2}${j}`);
-        //   console.log("cellDown2", cellDown2);
-        // }
-        // if (`cell${i}${j + 2}` != null) {
-        //   let cellRight2 = document.getElementById(`cell${i}${j + 2}`);
-        //   console.log("cellRight2", cellRight2);
-        // }
-        // if (`cell${i}${j - 2}` != null) {
-        //   let cellLeft2 = document.getElementById(`cell${i}${j - 2}`);
-        //   console.log("cellLeft2", cellLeft2);
-        // }
-        // if (`cell${i + 2}${j - 2}` != null) {
-        //   let cellDown2Left2 = document.getElementById(`cell${i + 2}${j - 2}`);
-        //   console.log("cellDown2Left2", cellDown2Left2);
-        // }
-        // if (`cell${i + 2}${j + 2}` != null) {
-        //   let cellDown2Right2 = document.getElementById(`cell${i + 2}${j + 2}`);
-        //   console.log("cellDown2Right2", cellDown2Right2);
-        // }
-        // if (`cell${i - 2}${j - 2}` != null) {
-        //   let cellUp2Left2 = document.getElementById(`cell${i - 2}${j - 2}`);
-        //   console.log("cellUp2Left2", cellUp2Left2);
-        // }
-        // if (`cell${i - 2}${j + 2}` != null) {
-        //   let cellUp2Right2 = document.getElementById(`cell${i - 2}${j + 2}`);
-        //   console.log("cellUp2Right2", cellUp2Right2);
-        // }
-
-        // if (gameCell.textContent == cellDown1.textContent) {
-        //   console.log(`${currentPlayer} wins!!`);
-        // }
 
         // Switch turns
         function switchPlayers() {
