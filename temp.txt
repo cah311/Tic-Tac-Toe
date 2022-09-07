@@ -1,93 +1,50 @@
-// Gameboard Module
-const gameBoard = (() => {
-  let gameboardArray = [];
-  let gameBoardHTML = document.getElementById("game-space");
-
-  //create grid
-  for (let i = 0; i <= 2; i++) {
-    let gameRow = document.createElement("div");
-    gameRow.setAttribute("id", `row${i}`);
-    gameRow.setAttribute("class", `game-row`);
-    gameBoardHTML.append(gameRow);
-    for (let j = 0; j <= 2; j++) {
-      let gameCell = document.createElement("div");
-      gameCell.setAttribute("id", `cell${i}${j}`);
-      gameCell.setAttribute("class", `game-cell`);
-      gameCell.addEventListener("click", function () {
-        const mark = document.createElement("h1");
-        mark.setAttribute("class", "X");
-        mark.textContent = "X";
-        gameCell.appendChild(mark);
-        console.log(`cell${i}${j}`);
-      });
-      gameboardArray.push(gameCell);
-      gameRow.append(gameCell);
-    }
-  }
-})();
-
-// Player Objects
-const playerFactory = (name, marker) => {
-  //   this.name = name;
-
-  //   if (typeof Object == "undefined") {
-  //     name = "player1";
-  //   } else {
-  //     name = "player2";
-  //   }
-  //   Object = this.name;
-
-  //   console.log(Object, this.name);
-  //   return { Object };
-  name;
-  marker;
-  console.log(this);
-  console.log(`${name}${marker}`);
-  return { name, marker };
-};
-
-// const person1 = Player();
-// const person2 = Player();
-// console.log(person1);
-// console.log(person2);
-
-function selection(name) {
-  name;
-  const markerSelection = document.getElementsByClassName("marker-button");
-  //   if (typeof Object != "undefined")  {
-
-  //   }
-
-  for (let i in markerSelection) {
-    markerSelection[i].onclick = function () {
-      let marker = markerSelection[i].value;
-      playerFactory(name, marker);
-      console.log(name, marker);
-    };
-  }
-}
-
-// const player1 = selection("player1");
-// const player2 = selection("player2");
-
-const player = playerFactory("player1", "x");
-
-// // function playerSelectionX() {
-//   let a = document.getElementById("x-button").value;
-//   console.log(a);
-// }
-// function playerSelectionO() {
-//   let b = document.getElementById("o-button").value;
-//   console.log(b);
-// }
-// const player1 = Player("Jim", "X");
-// const player2 = Player("Mark", "O");
-
-// player1.marker;
-// player2.marker;
-
-// player1.setMarker();
-// player2.setMarker();
-
-// Gameflow Functions
-const displayController = (() => {})();
+ if (
+          cellUp1 !== null &&
+          cellDown1 !== null &&
+          cellLeft1 !== null &&
+          cellRight1 !== null &&
+          cellUp1Left1 !== null &&
+          cellDown1Right1 !== null &&
+          cellUp1Right1 !== null &&
+          cellDown1Left1 !== null
+        ) {
+          if (
+            (this.textContent === cellUp1.textContent &&
+              this.textContent === cellDown1.textContent) ||
+            (this.textContent === cellLeft1.textContent &&
+              this.textContent === cellRight1.textContent) ||
+            (this.textContent === cellUp1Left1.textContent &&
+              this.textContent === cellDown1Right1.textContent) ||
+            (this.textContent === cellUp1Right1.textContent &&
+              this.textContent === cellDown1Left1.textContent)
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else {
+            switchPlayers();
+          }
+        } else if (
+          !cellUp1 ||
+          !cellDown1 ||
+          !cellLeft1 ||
+          !cellRight1 ||
+          !cellUp1Left1 ||
+          !cellUp1Right1 ||
+          !cellDown1Left1 ||
+          !cellDown1Right1 ||
+          !cellUp2 ||
+          !cellDown2 ||
+          !cellRight2 ||
+          !cellLeft2 ||
+          !cellDown2Left2 ||
+          !cellDown2Right2 ||
+          !cellUp2Left2 ||
+          !cellUp2Right2
+        ) {
+          console.log("true");
+          console.log(this);
+          //   switchPlayers();
+        }
