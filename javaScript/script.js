@@ -16,13 +16,33 @@ const gameBoard = (() => {
 
       // Cell onClick
       gameCell.addEventListener("click", function () {
-        const mark = document.createElement("h1");
-        mark.setAttribute("class", "game-board-mark");
-        mark.setAttribute("value", currentPlayer.marker);
-        mark.textContent = currentPlayer.marker;
-        gameCell.appendChild(mark);
-        console.log(`cell${i}${j}`);
+        //check for existing mark
+        if (gameCell.textContent === "") {
+          console.log(this.textContent);
+          const mark = document.createElement("h1");
+          mark.setAttribute("class", "game-board-mark");
+          mark.setAttribute("value", currentPlayer.marker);
+          mark.textContent = currentPlayer.marker;
+          gameCell.appendChild(mark);
+          console.log(`cell${i}${j}`);
+        } else {
+          return;
+        }
 
+        // Check for draw
+        if (
+          cell01.textContent !== "" &&
+          cell02.textContent !== "" &&
+          cell10.textContent !== "" &&
+          cell11.textContent !== "" &&
+          cell12.textContent !== "" &&
+          cell20.textContent !== "" &&
+          cell21.textContent !== "" &&
+          cell22.textContent !== "" &&
+          cell00.textContent !== ""
+        ) {
+          alert("Draw");
+        }
         // Winning conditions
 
         let cellUp1 = document.getElementById(`cell${i - 1}${j}`);
@@ -42,8 +62,8 @@ const gameBoard = (() => {
         let cellUp2Left2 = document.getElementById(`cell${i - 2}${j - 2}`);
         let cellUp2Right2 = document.getElementById(`cell${i - 2}${j + 2}`);
 
+        //Vertical check
         if (cellUp1 !== null && this.textContent === cellUp1.textContent) {
-          //Vertical check
           if (
             cellDown1 !== null &&
             this.textContent === cellDown1.textContent
@@ -227,13 +247,32 @@ const gameBoard = (() => {
             currentPlayer = playerX;
           }
         }
-        //switchPlayers();
       });
 
       gameboardArray.push(gameCell);
       gameRow.append(gameCell);
     }
   }
+
+  // reset button
+  const btnContainer = document.getElementById("button-container");
+  const resetButton = document.createElement("button");
+  resetButton.setAttribute("id", "reset-button");
+  resetButton.textContent = "Reset";
+  btnContainer.append(resetButton);
+
+  //reset gameboard
+  resetButton.addEventListener("click", function () {
+    cell01.textContent = "";
+    cell02.textContent = "";
+    cell10.textContent = "";
+    cell11.textContent = "";
+    cell12.textContent = "";
+    cell20.textContent = "";
+    cell21.textContent = "";
+    cell22.textContent = "";
+    cell00.textContent = "";
+  });
 })();
 
 // Player Objects

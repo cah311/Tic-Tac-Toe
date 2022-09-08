@@ -1,4 +1,8 @@
 To do: 
 1. Figure out a draw alert 
 2. make restrictions on how many markers can be put on each space
-3. design
+3. clean up code (remove console logs)
+4. create reset button
+5. create AI
+-- create a button to choose if your playing computer or person 
+. design
