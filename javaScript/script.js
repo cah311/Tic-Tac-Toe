@@ -296,8 +296,28 @@ const displayController = (() => {
   let x = 1;
   let player = `Player ${x}`;
 
-  //Create popup window
+  let opponantChoice = "false";
+
   const playerPopup = document.getElementById("player-popup");
+
+  //Create opponant popup window
+  const opPopupWindow = document.createElement("div");
+  opPopupWindow.setAttribute("id", "op-popup-window");
+  opPopupWindow.setAttribute("class", "active");
+  playerPopup.append(opPopupWindow);
+
+  //Create Opponant Heading
+  const opPopupHeader = document.createElement("div");
+  opPopupHeader.setAttribute("id", "popup-header");
+  const opPopupTitle = document.createElement("h1");
+  opPopupTitle.setAttribute("id", "popup-title");
+  opPopupTitle.innerHTML = "Choose your Opponant";
+
+  opPopupWindow.append(opPopupHeader);
+  opPopupHeader.append(opPopupTitle);
+
+  //Create popup window
+
   const popupWindow = document.createElement("div");
   popupWindow.setAttribute("id", "popup-window");
   popupWindow.setAttribute("class", "active");
@@ -308,19 +328,44 @@ const displayController = (() => {
   popupHeader.setAttribute("id", "popup-header");
   const popupTitle = document.createElement("h1");
   popupTitle.setAttribute("id", "popup-title");
+
   popupTitle.innerHTML = player;
+
   popupWindow.append(popupHeader);
   popupHeader.append(popupTitle);
 
   // Popup Text
   const popupText = document.createElement("div");
   popupText.setAttribute("id", "popup-text");
+
   popupText.innerHTML = "Choose your Marker";
+
   popupWindow.append(popupText);
 
   //create buttons
+  const opButtonContainer = document.createElement("div");
+  opPopupWindow.append(opButtonContainer);
+
   const buttonContainer = document.createElement("div");
   popupWindow.append(buttonContainer);
+
+  const compOpBtn = document.createElement("button");
+  compOpBtn.setAttribute("class", "opponant-button");
+  compOpBtn.setAttribute("id", "computer-opponant");
+  compOpBtn.setAttribute("value", "comp");
+  compOpBtn.setAttribute("op-data-button", "");
+
+  compOpBtn.innerHTML = "Computer";
+  opButtonContainer.append(compOpBtn);
+
+  const humanOpBtn = document.createElement("button");
+  humanOpBtn.setAttribute("class", "human-button");
+  humanOpBtn.setAttribute("id", "human-opponant");
+  humanOpBtn.setAttribute("value", "human");
+  humanOpBtn.setAttribute("op-data-button", "");
+
+  humanOpBtn.innerHTML = "Human";
+  opButtonContainer.append(humanOpBtn);
 
   const xButton = document.createElement("button");
   xButton.setAttribute("class", "marker-button");
@@ -338,8 +383,20 @@ const displayController = (() => {
   oButton.innerHTML = "O";
   buttonContainer.append(oButton);
 
-  //Button Functions
+  //Opponant Button Functions
   const popupOverlay = document.getElementById("popup-overlay");
+  const opButtonClick = document.querySelectorAll("[op-data-button]");
+
+  opButtonClick.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.value === "human") {
+        const opPopup = document.getElementById("op-popup-window");
+        console.log(button.value);
+        closeOpPopup(opPopup);
+      }
+    });
+  });
+  //Button Functions
   const buttonClick = document.querySelectorAll("[data-button]");
 
   buttonClick.forEach((button) => {
@@ -386,6 +443,11 @@ const displayController = (() => {
     console.log("bang");
 
     popupOverlay.classList.remove("active");
+  }
+
+  function closeOpPopup(opPopup) {
+    opPopup.classList.remove("active");
+    console.log("bang");
   }
 
   function closeOverlay(popupOverlay) {
