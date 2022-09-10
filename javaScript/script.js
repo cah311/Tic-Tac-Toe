@@ -2,6 +2,7 @@
 const gameBoard = (() => {
   let gameboardArray = [];
   let gameBoardHTML = document.getElementById("game-space");
+  let randomize = "off";
 
   //create grid
   for (let i = 0; i <= 2; i++) {
@@ -16,6 +17,34 @@ const gameBoard = (() => {
 
       // Cell onClick
       gameCell.addEventListener("click", function () {
+        // Computer Selection
+        function randomCompSelection(array) {
+          randomize = "on";
+          switchPlayers();
+          randomCycle();
+          function randomCycle() {
+            for (let i = array.length - 1; i >= 0; i--) {
+              if (i < 0) {
+                draw();
+                return;
+              }
+              let j = Math.floor(Math.random() * (i + 1));
+              let k = gameboardArray[j];
+              let x = document.getElementById(k.id);
+              if (x.textContent !== "") {
+                randomCycle();
+              }
+              console.log(k);
+              console.log(k.id);
+              x.click();
+              console.log(`Computer Selection: ${x}`);
+              switchPlayers();
+              randomize = "off";
+              return;
+            }
+          }
+        }
+
         //check for existing mark
         if (gameCell.textContent === "") {
           console.log(this.textContent);
@@ -24,25 +53,11 @@ const gameBoard = (() => {
           mark.setAttribute("value", currentPlayer.marker);
           mark.textContent = currentPlayer.marker;
           gameCell.appendChild(mark);
-          console.log(`cell${i}${j}`);
+          //console.log(`cell${i}${j}`);
         } else {
           return;
         }
 
-        // Check for draw
-        if (
-          cell01.textContent !== "" &&
-          cell02.textContent !== "" &&
-          cell10.textContent !== "" &&
-          cell11.textContent !== "" &&
-          cell12.textContent !== "" &&
-          cell20.textContent !== "" &&
-          cell21.textContent !== "" &&
-          cell22.textContent !== "" &&
-          cell00.textContent !== ""
-        ) {
-          alert("Draw");
-        }
         // Winning conditions
 
         let cellUp1 = document.getElementById(`cell${i - 1}${j}`);
@@ -83,7 +98,7 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            console.log("final test");
+            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -100,7 +115,7 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            console.log("final test");
+            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -127,7 +142,7 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            console.log("final test");
+            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -144,7 +159,7 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            console.log("final test");
+            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -171,7 +186,7 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            console.log("final test");
+            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -188,7 +203,7 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            console.log("final test");
+            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -214,7 +229,7 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            console.log("final test");
+            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -231,22 +246,49 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            console.log("final test");
+            //console.log("final test");
             switchPlayers();
           }
         } else {
-          console.log("final test");
+          //console.log("final test");
           switchPlayers();
         }
 
         // Switch turns
         function switchPlayers() {
+          if (
+            currentPlayer.compStatus === "computerOn" &&
+            currentPlayer.name === "Player 1" &&
+            randomize === "off"
+          ) {
+            randomCompSelection(gameboardArray);
+          }
           if (currentPlayer.marker === "X") {
             currentPlayer = playerO;
           } else if (currentPlayer.marker === "O") {
             currentPlayer = playerX;
           }
         }
+        // Check for draw
+        function draw() {
+          if (
+            cell01.textContent !== "" &&
+            cell02.textContent !== "" &&
+            cell10.textContent !== "" &&
+            cell11.textContent !== "" &&
+            cell12.textContent !== "" &&
+            cell20.textContent !== "" &&
+            cell21.textContent !== "" &&
+            cell22.textContent !== "" &&
+            cell00.textContent !== "" &&
+            winner === ""
+          ) {
+            alert("Draw");
+            return;
+          }
+        }
+
+        draw();
       });
 
       gameboardArray.push(gameCell);
@@ -276,13 +318,14 @@ const gameBoard = (() => {
 })();
 
 // Player Objects
-const playerFactory = (name, marker) => {
+const playerFactory = (name, marker, compStatus) => {
   name;
   marker;
+  compStatus;
   const sayPlayer = () => {
-    console.log(`Player Object: ${name} ${marker}`);
+    console.log(`Player Object: ${name} ${marker} ${compStatus}`);
   };
-  return { name, marker, sayPlayer };
+  return { name, marker, compStatus, sayPlayer };
 };
 
 let playerX;
@@ -291,12 +334,12 @@ let currentPlayer;
 
 let winner;
 
-// Gameflow Functions
+// Game Functions
 const displayController = (() => {
   let x = 1;
   let player = `Player ${x}`;
 
-  let opponantChoice = "false";
+  let compStatus = "computerOff";
 
   const playerPopup = document.getElementById("player-popup");
 
@@ -394,9 +437,15 @@ const displayController = (() => {
         console.log(button.value);
         closeOpPopup(opPopup);
       }
+      if (button.value === "comp") {
+        const opPopup = document.getElementById("op-popup-window");
+        console.log(button.value);
+        compStatus = "computerOn";
+        closeOpPopup(opPopup);
+      }
     });
   });
-  //Button Functions
+  //Player Marker Button Functions
   const buttonClick = document.querySelectorAll("[data-button]");
 
   buttonClick.forEach((button) => {
@@ -409,7 +458,12 @@ const displayController = (() => {
       if (button.value === "X") {
         xButton.setAttribute("class", "active");
         markerValue = button.value;
-        playerX = playerFactory(player, markerValue);
+        if (player === "Player 1") {
+          playerX = playerFactory(player, markerValue, compStatus);
+        } else {
+          playerX = playerFactory(player, markerValue);
+        }
+
         if (playerX.name === "Player 1") {
           currentPlayer = playerX;
         }
@@ -418,8 +472,13 @@ const displayController = (() => {
       } else if (button.value === "O") {
         oButton.setAttribute("class", "active");
         markerValue = button.value;
-        playerFactory(player, markerValue);
-        playerO = playerFactory(player, markerValue);
+
+        if (player === "Player 1") {
+          playerO = playerFactory(player, markerValue, compStatus);
+        } else {
+          playerO = playerFactory(player, markerValue);
+        }
+
         if (playerO.name === "Player 1") {
           currentPlayer = playerO;
         }
