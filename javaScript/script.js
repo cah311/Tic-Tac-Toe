@@ -1,10 +1,10 @@
-// Gameboard Module
+//// Gameboard Module
 const gameBoard = (() => {
   let gameboardArray = [];
   let gameBoardHTML = document.getElementById("game-space");
   let randomize = "off";
 
-  //create grid
+  ///create grid
   for (let i = 0; i <= 2; i++) {
     let gameRow = document.createElement("div");
     gameRow.setAttribute("id", `row${i}`);
@@ -42,14 +42,11 @@ const gameBoard = (() => {
                 randomCycle();
               }
 
-              console.log(k);
-              console.log(k.id);
               x.click();
               cycle = cycle - 1;
               if (cycle != 0) {
                 return;
               }
-              console.log(`Computer Selection: ${x}`);
               switchPlayers();
               randomize = "off";
               return;
@@ -57,15 +54,13 @@ const gameBoard = (() => {
           }
         }
 
-        //check for existing mark
+        //on click check for existing mark
         if (gameCell.textContent === "") {
-          console.log(this.textContent);
           const mark = document.createElement("h1");
           mark.setAttribute("class", "game-board-mark");
           mark.setAttribute("value", currentPlayer.marker);
           mark.textContent = currentPlayer.marker;
           gameCell.appendChild(mark);
-          //console.log(`cell${i}${j}`);
         } else {
           return;
         }
@@ -89,26 +84,18 @@ const gameBoard = (() => {
         let cellUp2Left2 = document.getElementById(`cell${i - 2}${j - 2}`);
         let cellUp2Right2 = document.getElementById(`cell${i - 2}${j + 2}`);
 
-        //Vertical check
+        //check for winners if cell above is matching
         if (cellUp1 !== null && this.textContent === cellUp1.textContent) {
           if (
             cellDown1 !== null &&
             this.textContent === cellDown1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp2 !== null &&
             this.textContent === cellUp2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellRight1 !== null &&
             this.textContent === cellRight1.textContent &&
@@ -116,10 +103,6 @@ const gameBoard = (() => {
             this.textContent === cellRight2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellLeft1 !== null &&
             this.textContent === cellLeft1.textContent &&
@@ -127,10 +110,6 @@ const gameBoard = (() => {
             this.textContent === cellLeft2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellLeft1 !== null &&
             this.textContent === cellLeft1.textContent &&
@@ -138,10 +117,6 @@ const gameBoard = (() => {
             this.textContent === cellRight1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1Left1 !== null &&
             this.textContent === cellUp1Left1.textContent &&
@@ -149,10 +124,6 @@ const gameBoard = (() => {
             this.textContent === cellDown1Right1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1Right1 !== null &&
             this.textContent === cellUp1Right1.textContent &&
@@ -160,15 +131,11 @@ const gameBoard = (() => {
             this.textContent === cellDown1Left1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else {
-            //console.log("final test");
             switchPlayers();
           }
         } else if (
+          //check for winners if cell below is matching
           cellDown1 !== null &&
           this.textContent === cellDown1.textContent
         ) {
@@ -177,10 +144,6 @@ const gameBoard = (() => {
             this.textContent === cellDown2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellRight1 !== null &&
             this.textContent === cellRight1.textContent &&
@@ -188,10 +151,6 @@ const gameBoard = (() => {
             this.textContent === cellRight2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellLeft1 !== null &&
             this.textContent === cellLeft1.textContent &&
@@ -199,10 +158,6 @@ const gameBoard = (() => {
             this.textContent === cellLeft2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellLeft1 !== null &&
             this.textContent === cellLeft1.textContent &&
@@ -210,10 +165,6 @@ const gameBoard = (() => {
             this.textContent === cellRight1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1Left1 !== null &&
             this.textContent === cellUp1Left1.textContent &&
@@ -221,10 +172,6 @@ const gameBoard = (() => {
             this.textContent === cellDown1Right1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1Right1 !== null &&
             this.textContent === cellUp1Right1.textContent &&
@@ -232,16 +179,11 @@ const gameBoard = (() => {
             this.textContent === cellDown1Left1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else {
-            //console.log("final test");
             switchPlayers();
           }
         } else if (
-          // horizontal check
+          //check for winners if cell to the left is matching
           cellLeft1 !== null &&
           this.textContent === cellLeft1.textContent
         ) {
@@ -250,19 +192,11 @@ const gameBoard = (() => {
             this.textContent === cellRight1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellLeft2 !== null &&
             this.textContent === cellLeft2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1 !== null &&
             this.textContent === cellUp1.textContent &&
@@ -270,10 +204,6 @@ const gameBoard = (() => {
             this.textContent === cellUp2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellDown1 !== null &&
             this.textContent === cellDown1.textContent &&
@@ -281,10 +211,6 @@ const gameBoard = (() => {
             this.textContent === cellDown2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1 !== null &&
             this.textContent === cellUp1.textContent &&
@@ -292,10 +218,6 @@ const gameBoard = (() => {
             this.textContent === cellDown1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1Left1 !== null &&
             this.textContent === cellUp1Left1.textContent &&
@@ -303,10 +225,6 @@ const gameBoard = (() => {
             this.textContent === cellDown1Right1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1Right1 !== null &&
             this.textContent === cellUp1Right1.textContent &&
@@ -314,15 +232,11 @@ const gameBoard = (() => {
             this.textContent === cellDown1Left1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else {
-            //console.log("final test");
             switchPlayers();
           }
         } else if (
+          //check for winners if cell to the right is matching
           cellRight1 !== null &&
           this.textContent === cellRight1.textContent
         ) {
@@ -331,10 +245,6 @@ const gameBoard = (() => {
             this.textContent === cellRight2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1 !== null &&
             this.textContent === cellUp1.textContent &&
@@ -342,10 +252,6 @@ const gameBoard = (() => {
             this.textContent === cellUp2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellDown1 !== null &&
             this.textContent === cellDown1.textContent &&
@@ -353,10 +259,6 @@ const gameBoard = (() => {
             this.textContent === cellDown2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1 !== null &&
             this.textContent === cellUp1.textContent &&
@@ -364,10 +266,6 @@ const gameBoard = (() => {
             this.textContent === cellDown1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1Left1 !== null &&
             this.textContent === cellUp1Left1.textContent &&
@@ -375,10 +273,6 @@ const gameBoard = (() => {
             this.textContent === cellDown1Right1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp1Right1 !== null &&
             this.textContent === cellUp1Right1.textContent &&
@@ -391,11 +285,10 @@ const gameBoard = (() => {
               "-----------------------------------------------------"
             );
           } else {
-            //console.log("final test");
             switchPlayers();
           }
         } else if (
-          // diagonal check
+          // diagonal checks
           cellUp1Left1 !== null &&
           this.textContent === cellUp1Left1.textContent
         ) {
@@ -404,21 +297,12 @@ const gameBoard = (() => {
             this.textContent === cellDown1Right1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp2Left2 !== null &&
             this.textContent === cellUp2Left2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else {
-            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -430,12 +314,7 @@ const gameBoard = (() => {
             this.textContent === cellDown2Right2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else {
-            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -447,21 +326,12 @@ const gameBoard = (() => {
             this.textContent === cellDown1Left1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else if (
             cellUp2Right2 !== null &&
             this.textContent === cellUp2Right2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else {
-            //console.log("final test");
             switchPlayers();
           }
         } else if (
@@ -473,16 +343,10 @@ const gameBoard = (() => {
             this.textContent === cellDown2Left2.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
-            console.log(`${currentPlayer.name} wins!!`);
-            console.log(
-              "-----------------------------------------------------"
-            );
           } else {
-            //console.log("final test");
             switchPlayers();
           }
         } else {
-          //console.log("final test");
           switchPlayers();
         }
 
@@ -528,14 +392,14 @@ const gameBoard = (() => {
     }
   }
 
-  // reset button
+  /// reset button
   const btnContainer = document.getElementById("button-container");
   const resetButton = document.createElement("button");
   resetButton.setAttribute("id", "reset-button");
   resetButton.textContent = "Reset";
   btnContainer.append(resetButton);
 
-  //reset gameboard
+  ///reset gameboard
   resetButton.addEventListener("click", function () {
     cell01.textContent = "";
     cell02.textContent = "";
@@ -549,15 +413,13 @@ const gameBoard = (() => {
   });
 })();
 
-// Player Objects
+//// Player Objects
 const playerFactory = (name, marker, compStatus) => {
   name;
   marker;
   compStatus;
-  const sayPlayer = () => {
-    console.log(`Player Object: ${name} ${marker} ${compStatus}`);
-  };
-  return { name, marker, compStatus, sayPlayer };
+
+  return { name, marker, compStatus };
 };
 
 let playerX;
@@ -566,7 +428,7 @@ let currentPlayer;
 
 let winner;
 
-// Game Functions
+//// Player Rules Module
 const displayController = (() => {
   let x = 1;
   let player = `Player ${x}`;
@@ -575,13 +437,13 @@ const displayController = (() => {
 
   const playerPopup = document.getElementById("player-popup");
 
-  //Create opponant popup window
+  ///Create opponant popup window
   const opPopupWindow = document.createElement("div");
   opPopupWindow.setAttribute("id", "op-popup-window");
   opPopupWindow.setAttribute("class", "active");
   playerPopup.append(opPopupWindow);
 
-  //Create Opponant Heading
+  ///Create Opponant Heading
   const opPopupHeader = document.createElement("div");
   opPopupHeader.setAttribute("id", "popup-header");
   const opPopupTitle = document.createElement("h1");
@@ -591,14 +453,13 @@ const displayController = (() => {
   opPopupWindow.append(opPopupHeader);
   opPopupHeader.append(opPopupTitle);
 
-  //Create popup window
-
+  ///Create popup window
   const popupWindow = document.createElement("div");
   popupWindow.setAttribute("id", "popup-window");
   popupWindow.setAttribute("class", "active");
   playerPopup.append(popupWindow);
 
-  //Create Player Heading
+  ///Create Player Heading
   const popupHeader = document.createElement("div");
   popupHeader.setAttribute("id", "popup-header");
   const popupTitle = document.createElement("h1");
@@ -609,7 +470,7 @@ const displayController = (() => {
   popupWindow.append(popupHeader);
   popupHeader.append(popupTitle);
 
-  // Popup Text
+  /// Popup Text
   const popupText = document.createElement("div");
   popupText.setAttribute("id", "popup-text");
 
@@ -617,7 +478,7 @@ const displayController = (() => {
 
   popupWindow.append(popupText);
 
-  //create buttons
+  ///create buttons
   const opButtonContainer = document.createElement("div");
   opPopupWindow.append(opButtonContainer);
 
@@ -658,7 +519,7 @@ const displayController = (() => {
   oButton.innerHTML = "O";
   buttonContainer.append(oButton);
 
-  //Opponant Button Functions
+  ///Opponant Button Functions
   const popupOverlay = document.getElementById("popup-overlay");
   const opButtonClick = document.querySelectorAll("[op-data-button]");
 
@@ -666,25 +527,20 @@ const displayController = (() => {
     button.addEventListener("click", () => {
       if (button.value === "human") {
         const opPopup = document.getElementById("op-popup-window");
-        console.log(button.value);
         closeOpPopup(opPopup);
       }
       if (button.value === "comp") {
         const opPopup = document.getElementById("op-popup-window");
-        console.log(button.value);
         compStatus = "computerOn";
         closeOpPopup(opPopup);
       }
     });
   });
-  //Player Marker Button Functions
+  ///Player Marker Button Functions
   const buttonClick = document.querySelectorAll("[data-button]");
 
   buttonClick.forEach((button) => {
     button.addEventListener("click", () => {
-      console.log(button.value);
-      console.log(player);
-
       let markerValue;
 
       if (button.value === "X") {
@@ -699,8 +555,6 @@ const displayController = (() => {
         if (playerX.name === "Player 1") {
           currentPlayer = playerX;
         }
-        console.log(playerX);
-        console.log(`Current Player: ${currentPlayer}`);
       } else if (button.value === "O") {
         oButton.setAttribute("class", "active");
         markerValue = button.value;
@@ -714,8 +568,6 @@ const displayController = (() => {
         if (playerO.name === "Player 1") {
           currentPlayer = playerO;
         }
-        console.log(playerO);
-        console.log(`Current Player: ${currentPlayer}`);
       }
       const popup = document.getElementById("popup-window");
       x = x + 1;
@@ -731,25 +583,18 @@ const displayController = (() => {
     if (popup == null) return;
     if (x < 3) return;
     popup.classList.remove("active");
-    console.log("bang");
 
     popupOverlay.classList.remove("active");
   }
 
   function closeOpPopup(opPopup) {
     opPopup.classList.remove("active");
-    console.log("bang");
   }
 
   function closeOverlay(popupOverlay) {
     if (popupOverlay == null) return;
     if (x < 3) return;
     popupOverlay.classList.remove("active");
-    console.log("bang2");
-    console.log("-----------------------------------------------------");
-
     popupOverlay.classList.remove("active");
   }
-
-  //Winning rules
 })();
