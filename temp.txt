@@ -1,10 +1,10 @@
 To do: 
--create AI
+-xcreate AI
 -x set variable for computer on or off
 -x make conditions to only show player two computer on or off
 -x create button function for computer on to change computer status
--- create conditions for player two if computer is on
--- add AI
+--x create conditions for player two if computer is on
+--x add AI
 --- add skill level?
 - clean code 
 -design

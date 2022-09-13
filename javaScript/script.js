@@ -19,24 +19,36 @@ const gameBoard = (() => {
       gameCell.addEventListener("click", function () {
         // Computer Selection
         function randomCompSelection(array) {
+          let arrayTracker = array.length - 1;
           randomize = "on";
           switchPlayers();
+          let cycle = 0;
           randomCycle();
+
           function randomCycle() {
-            for (let i = array.length - 1; i >= 0; i--) {
-              if (i < 0) {
+            cycle = cycle + 1;
+            if (winner !== undefined) {
+              return;
+            }
+            for (arrayTracker; arrayTracker >= 0; arrayTracker--) {
+              if (arrayTracker < 0) {
                 draw();
                 return;
               }
-              let j = Math.floor(Math.random() * (i + 1));
+              let j = Math.floor(Math.random() * (arrayTracker + 1));
               let k = gameboardArray[j];
               let x = document.getElementById(k.id);
               if (x.textContent !== "") {
                 randomCycle();
               }
+
               console.log(k);
               console.log(k.id);
               x.click();
+              cycle = cycle - 1;
+              if (cycle != 0) {
+                return;
+              }
               console.log(`Computer Selection: ${x}`);
               switchPlayers();
               randomize = "off";
@@ -97,6 +109,61 @@ const gameBoard = (() => {
             console.log(
               "-----------------------------------------------------"
             );
+          } else if (
+            cellRight1 !== null &&
+            this.textContent === cellRight1.textContent &&
+            cellRight2 !== null &&
+            this.textContent === cellRight2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellLeft1 !== null &&
+            this.textContent === cellLeft1.textContent &&
+            cellLeft2 !== null &&
+            this.textContent === cellLeft2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellLeft1 !== null &&
+            this.textContent === cellLeft1.textContent &&
+            cellRight1 !== null &&
+            this.textContent === cellRight1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1Left1 !== null &&
+            this.textContent === cellUp1Left1.textContent &&
+            cellDown1Right1 !== null &&
+            this.textContent === cellDown1Right1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1Right1 !== null &&
+            this.textContent === cellUp1Right1.textContent &&
+            cellDown1Left1 !== null &&
+            this.textContent === cellDown1Left1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
           } else {
             //console.log("final test");
             switchPlayers();
@@ -108,6 +175,61 @@ const gameBoard = (() => {
           if (
             cellDown2 !== null &&
             this.textContent === cellDown2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellRight1 !== null &&
+            this.textContent === cellRight1.textContent &&
+            cellRight2 !== null &&
+            this.textContent === cellRight2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellLeft1 !== null &&
+            this.textContent === cellLeft1.textContent &&
+            cellLeft2 !== null &&
+            this.textContent === cellLeft2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellLeft1 !== null &&
+            this.textContent === cellLeft1.textContent &&
+            cellRight1 !== null &&
+            this.textContent === cellRight1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1Left1 !== null &&
+            this.textContent === cellUp1Left1.textContent &&
+            cellDown1Right1 !== null &&
+            this.textContent === cellDown1Right1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1Right1 !== null &&
+            this.textContent === cellUp1Right1.textContent &&
+            cellDown1Left1 !== null &&
+            this.textContent === cellDown1Left1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
             console.log(`${currentPlayer.name} wins!!`);
@@ -141,6 +263,61 @@ const gameBoard = (() => {
             console.log(
               "-----------------------------------------------------"
             );
+          } else if (
+            cellUp1 !== null &&
+            this.textContent === cellUp1.textContent &&
+            cellUp2 !== null &&
+            this.textContent === cellUp2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellDown1 !== null &&
+            this.textContent === cellDown1.textContent &&
+            cellDown2 !== null &&
+            this.textContent === cellDown2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1 !== null &&
+            this.textContent === cellUp1.textContent &&
+            cellDown1 !== null &&
+            this.textContent === cellDown1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1Left1 !== null &&
+            this.textContent === cellUp1Left1.textContent &&
+            cellDown1Right1 !== null &&
+            this.textContent === cellDown1Right1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1Right1 !== null &&
+            this.textContent === cellUp1Right1.textContent &&
+            cellDown1Left1 !== null &&
+            this.textContent === cellDown1Left1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
           } else {
             //console.log("final test");
             switchPlayers();
@@ -152,6 +329,61 @@ const gameBoard = (() => {
           if (
             cellRight2 !== null &&
             this.textContent === cellRight2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1 !== null &&
+            this.textContent === cellUp1.textContent &&
+            cellUp2 !== null &&
+            this.textContent === cellUp2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellDown1 !== null &&
+            this.textContent === cellDown1.textContent &&
+            cellDown2 !== null &&
+            this.textContent === cellDown2.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1 !== null &&
+            this.textContent === cellUp1.textContent &&
+            cellDown1 !== null &&
+            this.textContent === cellDown1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1Left1 !== null &&
+            this.textContent === cellUp1Left1.textContent &&
+            cellDown1Right1 !== null &&
+            this.textContent === cellDown1Right1.textContent
+          ) {
+            alert(`${currentPlayer.name} wins!!`);
+            console.log(`${currentPlayer.name} wins!!`);
+            console.log(
+              "-----------------------------------------------------"
+            );
+          } else if (
+            cellUp1Right1 !== null &&
+            this.textContent === cellUp1Right1.textContent &&
+            cellDown1Left1 !== null &&
+            this.textContent === cellDown1Left1.textContent
           ) {
             alert(`${currentPlayer.name} wins!!`);
             console.log(`${currentPlayer.name} wins!!`);
