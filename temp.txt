@@ -6,5 +6,8 @@ To do:
 --x create conditions for player two if computer is on
 --x add AI
 --- add skill level?
-- clean code 
+-x clean code 
 -design
+--make game space bigger
+-- move reset button
+-- style popups

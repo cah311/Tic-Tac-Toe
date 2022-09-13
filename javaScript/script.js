@@ -2,6 +2,7 @@
 const gameBoard = (() => {
   let gameboardArray = [];
   let gameBoardHTML = document.getElementById("game-space");
+  let gameContainer = document.getElementById("game-container");
   let randomize = "off";
 
   ///create grid
@@ -9,7 +10,7 @@ const gameBoard = (() => {
     let gameRow = document.createElement("div");
     gameRow.setAttribute("id", `row${i}`);
     gameRow.setAttribute("class", `game-row`);
-    gameBoardHTML.append(gameRow);
+    gameContainer.append(gameRow);
     for (let j = 0; j <= 2; j++) {
       let gameCell = document.createElement("div");
       gameCell.setAttribute("id", `cell${i}${j}`);
@@ -480,9 +481,11 @@ const displayController = (() => {
 
   ///create buttons
   const opButtonContainer = document.createElement("div");
+  opButtonContainer.setAttribute("id", "op-button-container");
   opPopupWindow.append(opButtonContainer);
 
   const buttonContainer = document.createElement("div");
+  buttonContainer.setAttribute("id", "marker-button-container");
   popupWindow.append(buttonContainer);
 
   const compOpBtn = document.createElement("button");
